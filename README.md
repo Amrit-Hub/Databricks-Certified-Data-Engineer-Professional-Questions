@@ -14,9 +14,9 @@
 
 Repo [link](https://github.com/Amrit-Hub/Databricks-Certified-Data-Engineer-Professional-Questions)
 
-## Questions
+## Topics
 
-I was able to note down these memory based questions.
+I was able to note down these topics memory based.
 
 1. Read parameters using dbutils.widgets.text and then get
 2. Read access for prod notebook for review to new data engineer - Can Read
@@ -26,7 +26,7 @@ I was able to note down these memory based questions.
 6. Scope access control to read prod secrets - Read on scope or secret
 7. %sh runs on driver node only
 8. If there is filter in query - file statistics in transaction log
-9. Vacuum run on shallo clone table- Error
+9. Vacuum run on shallow clone table- Error
 10. static_df.join(streaming_df) - which is not possible- left/inner/right
 11. Source is CDC - use merge into or leverage CDF feature
 12. How to find difference between previous and present commit
