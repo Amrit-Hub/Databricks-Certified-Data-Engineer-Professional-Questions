@@ -10,7 +10,7 @@
   * [DLT practices](/files/ade-mod-5-swe-practices-with-dlt.pdf)
   * [Automate prod workflows](/files/files/ade-mod-6-automate-production-workflows.pdf)
   * [Knowledge check](/files/ADEWD_Knowledge_Checks.pdf)
-  * [Udemy Course](https://www.udemy.com/course/practice-exams-databricks-data-engineer-professional-k/)[I personally opted this which is MUST. Use Udemy for Bussiness for free]
+  * [Udemy Practice](https://www.udemy.com/course/practice-exams-databricks-data-engineer-professional-k/)[I personally opted this which is MUST. Use Udemy for Bussiness for free]
 
 Repo [link](https://github.com/Amrit-Hub/Databricks-Certified-Data-Engineer-Professional-Questions)
 
