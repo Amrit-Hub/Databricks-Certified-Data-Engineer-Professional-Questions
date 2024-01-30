@@ -74,6 +74,7 @@ I was able to note down these topics memory based.
 54. in dev, multiple display() is executed repeatedly. what happens in prod?
 55. from delta, read has option("readChangeFeed") -  will it work on source delta table with no CDC
 56. from code - identlty tumbling or sliding window
+57. Question on performance tuning spark.sql.files.maxPartitionBytes, spark.sql.shuffle.partitions
 
 ## Must Read hyperlinks
 
@@ -121,3 +122,4 @@ No matter what, please read these databricks docs. Note the Important tags in th
 40. [What is the Databricks File System (DBFS)?](https://docs.databricks.com/en/dbfs/index.html)
 41. [Mounting cloud object storage on Databricks](https://docs.databricks.com/en/dbfs/mounts.html)
 42. [Databricks widgets](https://docs.databricks.com/en/notebooks/widgets.html)
+43. [Performance Tuning](https://spark.apache.org/docs/latest/sql-performance-tuning.html)
