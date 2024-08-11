@@ -18,63 +18,79 @@ Repo [link](https://github.com/Amrit-Hub/Databricks-Certified-Data-Engineer-Prof
 
 I was able to note down these topics memory based.
 
-1. Read parameters using dbutils.widgets.text and then get
-2. Read access for prod notebook for review to new data engineer - Can Read
-3. Attach notebook to cluster and run - Can Restart
-4. Production DLT pipelines in job cluster or all pupose cluster
-5. CTAS- executes load everytime or while table creation
-6. Scope access control to read prod secrets - Read on scope or secret
-7. %sh runs on driver node only
-8. If there is filter in query - file statistics in transaction log
-9. Vacuum run on shallow clone table- Error
-10. static_df.join(streaming_df) - which is not possible- left/inner/right
-11. Source is CDC - use merge into or leverage CDF feature
-12. How to find difference between previous and present commit
-13. Nighly jobs to overwrite a table for Bussiness team with least latency - Write to table nightly or create view
-14. What is Optimize Table - File target of 1GB?
-15. from code - .withWatermark for 10 inutes delay data
-16. from code - aggregate on source and overwrite/append to target
-17. Email notification in job run where mean(temp) > 120?. received email 3 time,  why?
-18. Checkpoint should be unique for each streams
-19. Autoloader scenario based question in bronze with history and do update in target
-20. Streaming deduplication scenario from code question
-21. from code - batch load will overwrite/append?
-22. in CDF, if readChangeFeed start version is 0, and append, will there be deduplication?
-23. from code - Upsert- identify table is SCD 1 or 2
-24. To avoid performance issue, decrease trigger time or not
-25. delta table file skipping column decision based question - forst 32 questions, nested or not
-26. Grant usage and grand select on delta- what will it do?
-27. how to create unmanaged table?
-28. good candidate for partition column - date col
-29. Alter table xx rename xx - what happens in transaction log
-30. add check constraint error and recommendation
-31. tbl properties + comments + partition details - describe history/extended/detail?
-32. question on delta lake file statistics
-33. ganglia UI- detect spill based question
-34. repo branch missing on local - how to get that branch with latest code changes
-35. delete from A where id in (select id from B) -  can we time travel and see those deleted records? and how to prevent?
-36. what is difference between dbfs and mounts
-37. api 2.0/jobs/create is exceuted 3 time using a json. what will happen? will it execute or create 3 jobs?
-38. What is dbfs
-39. install python lib - %pip install
-40. Task 1 has downstream task 2 and 3 in parallel. 1 passes, 2 passes, 3 fail- partially completed?
-41. streaming job retries in prod - job cluster, unlimited retries and 1 max concurrent run
-42. clone existing job and version it- how to do using databricks cli
-43. large json 1TB converted to parquet files with partition size of 512 MB - since its not delta table - read>narrow transformation>repartition 2048(1TB*1024*1024/512)>convert to parquet? order of these steps?
-44. from code - drop duplicated on batch read and append- what happens in target table dedupliactes?
-45. one column was missed in prof from kafka- in future, to avoid - write to bronze to have full replayable history
-46. question on giving access control to users
-47. pyspark.sql.function.broadcast- what is the use- distribute to all worker nodes?
-48. from code - join on orders_is, when not matched- insert *- what it does
-49. def bronze_load is given. write silver load function so that it was be transformed and updated downstream
-50. case when is_member("group") then email else 'redacted end as email, lsv from table- what output if not member of group
-51. ganlia UI question to see logs based question
-52. how to get task having multi task run - 2.0/jobs/list or get ot 2.0/jobs/run/list or get
-53. what is unit testing
-54. in dev, multiple display() is executed repeatedly. what happens in prod?
-55. from delta, read has option("readChangeFeed") -  will it work on source delta table with no CDC
-56. from code - identlty tumbling or sliding window
-57. Question on performance tuning spark.sql.files.maxPartitionBytes, spark.sql.shuffle.partitions
+1. How can you read parameters using `dbutils.widgets.text` and retrieve their values?
+   * **Hint** : Focus on using `dbutils.widgets.get` to retrieve the values.
+2. How do you provide read access for a production notebook to a new data engineer for review?
+   * **Hint** : The answer involves setting the notebook's permissions to "Can Read."
+3. When attaching a notebook to a cluster, which permission allows you to run the notebook?
+   * **Hint** : The user needs "Can Restart" permission.
+4. Should production DLT pipelines be run on a job cluster or an all-purpose cluster?
+5. Does a CTAS (CREATE TABLE AS SELECT) operation execute the load every time or only during table creation?
+6. How can you control access to read production secrets using scope access control?
+   * **Hint** : The answer involves setting "Read" permissions on the scope or secret.
+7. Where does the `%sh` command run in Databricks?
+   * **Hint** : It runs on the driver node.
+8. If a query contains a filter, how does Databricks use file statistics in the transaction log?
+9. What happens when you run a `VACUUM` command on a shallow clone table?
+   * **Hint** : Running `VACUUM` on a shallow clone table will result in an error?
+10. Which type of join (left, inner, right) is not possible when performing a join between a static DataFrame and a streaming DataFrame?
+    * **Hint** : Consider the limitations of streaming joins.
+11. When the source is a CDC (Change Data Capture), should you use `MERGE INTO` or leverage the Change Data Feed (CDF) feature?
+12. How can you find the difference between the previous and present commit in a Delta table?
+13. What is the best approach for nightly jobs that overwrite a table for the business team with the least latency?
+    * **Hint** : Should you write to the table nightly or create a view?
+14. What does the `OPTIMIZE TABLE` command do, and what is the target file size?
+    * **Hint** : Focus on the target file size of 1GB.
+15. In a streaming scenario, what does the `.withWatermark` function do with a delay of 10 minutes?
+16. How does aggregating on the source and then overwriting/appending to the target impact data load?
+17. Why did you receive three email notifications when a job was set to trigger an email if `mean(temp) > 120`?
+    * **Hint** : Investigate multiple triggers for the email alert.
+18. Why should the checkpoint directory be unique for each stream in a streaming job?
+19. How would you set up an Autoloader scenario to load data into a bronze table with history and update the target table?
+20. How can you handle streaming deduplication based on a given code scenario?
+21. For batch loading, what happens if the load is set to overwrite or append?
+    * **Hint** : Consider the impact on the target table.
+22. In a Change Data Feed (CDF) scenario, if `readChangeFeed` starts at version 0 and append is used, will there be deduplication?
+23. How can you identify whether a table is SCD Type 1 or 2 based on an upsert operation?
+24. To avoid performance issues, should you decrease the trigger time or not?
+25. How does Delta Lake decide on file skipping based on columns in a query, and what are the implications for nested columns?
+26. What does granting "Usage" and "Select" permissions on a Delta table allow a user to do?
+27. How do you create an unmanaged table in Databricks?
+28. What makes a date column a good candidate for partitioning in a Delta table?
+29. What happens in the transaction log when you rename a Delta table using `ALTER TABLE xx RENAME xx`?
+30. How would you handle an error with a check constraint and what would you recommend?
+31. When using `DESCRIBE` commands, how can you retrieve table properties, comments, and partition details?
+    * **Hint** : Use `DESCRIBE HISTORY`, `DESCRIBE EXTENDED`, or `DESCRIBE DETAIL`.?
+32. How are file statistics used in Delta Lake, and why are they important?
+33. In the Ganglia UI, how can you detect a spill during query execution?
+34. If a repo branch is missing locally, how can you retrieve that branch with the latest code changes?
+35. After deleting records with a query like `DELETE FROM A WHERE id IN (SELECT id FROM B)`, can you time travel to see the deleted records, and how can you prevent their permanent deletion?
+36. What are the differences between DBFS and mounts in Databricks?
+37. If the API `2.0/jobs/create` is executed three times with the same JSON, what will happen? Will it execute or create three jobs?
+38. What is DBFS in Databricks?
+39. How do you install a Python library using `%pip` in a Databricks notebook?
+40. If Task 1 has downstream Task 2 and Task 3 running in parallel, and Task 1 and Task 2 succeed while Task 3 fails, what will be the final job status?
+    * **Hint** : The job may show as partially completed.
+41. How do you handle streaming job retries in production, specifically with job clusters, unlimited retries, and a maximum of one concurrent run?
+42. How can you clone an existing job and version it using the Databricks CLI?
+43. When converting a large JSON file (1TB) to Parquet with a partition size of 512 MB, what is the correct order of steps? Should you read, perform narrow transformations, repartition (2048 partitions), then convert to Parquet?
+44. What happens in the target table when duplicates are dropped during a batch read and append operation?
+45. If a column was missed during profiling from Kafka, how can you ensure that the data is fully replayable in the future?
+    * **Hint** : Consider writing to a bronze table.
+46. How do you handle access control for users in Databricks?
+47. What is the use of the `pyspark.sql.functions.broadcast` function in a Spark job?
+    * **Hint** : It distributes the data to all worker nodes.
+48. What happens when performing a join on `orders_id` with a condition "when not matched, insert *"?
+    * **Hint** : The operation will insert records that don’t have a match.
+49. Given a function definition for loading bronze data, how would you write a silver load function to transform and update downstream tables?
+50. If the code includes `CASE WHEN is_member("group") THEN email ELSE 'redacted' END AS email`, what will be the output if the user is not a member of the group?
+51. How can you use the Ganglia UI to view logs and troubleshoot a Databricks job?
+52. When working with multi-task jobs, how do you list or get the tasks using the API `2.0/jobs/list` or `2.0/jobs/run/list`?
+53. What is unit testing, and how is it applied in a Databricks environment?
+54. What happens when multiple `display()` commands are executed repeatedly in development, and what is the impact in production?
+55. Will the `option("readChangeFeed")` work on a source Delta table with no CDC enabled?
+56. How can you identify whether a tumbling or sliding window is being used based on the code provided?
+57. What performance tuning considerations are involved with `spark.sql.files.maxPartitionBytes` and `spark.sql.shuffle.partitions`?
 
 ## Must Read hyperlinks
 
